@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bata Finance — Financial Management System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">B</div>
+        <div>
+          <strong>BATA</strong>
+          <span>FINANCE</span>
+        </div>
+      </div>
+
+      <div class="menu-label">MAIN MENU</div>
+      <nav>
+        <button class="nav-item active" data-section="dashboard"><span>⌂</span> Dashboard</button>
+        <button class="nav-item" data-section="customers"><span>♙</span> Nasabah</button>
+        <button class="nav-item" data-section="applications"><span>▤</span> Pengajuan</button>
+        <button class="nav-item" data-section="loans"><span>▣</span> Pinjaman</button>
+        <button class="nav-item" data-section="payments"><span>↙</span> Pembayaran</button>
+        <button class="nav-item" data-section="finance"><span>◈</span> Keuangan</button>
+        <button class="nav-item" data-section="reports"><span>▥</span> Laporan</button>
+      </nav>
+
+      <div class="menu-label">SYSTEM</div>
+      <nav>
+        <button class="nav-item" data-section="settings"><span>⚙</span> Pengaturan</button>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="support-card">
+          <span class="support-icon">?</span>
+          <div>
+            <strong>Butuh bantuan?</strong>
+            <small>Hubungi administrator</small>
+          </div>
+        </div>
+        <div class="user-mini">
+          <div class="avatar">AD</div>
+          <div>
+            <strong>Admin Bata</strong>
+            <small>Administrator</small>
+          </div>
+          <span>⋮</span>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="mobile-brand"><div class="brand-mark">B</div><strong>BATA FINANCE</strong></div>
+        <div class="search-box">
+          <span>⌕</span>
+          <input id="globalSearch" type="search" placeholder="Cari nasabah, pinjaman, transaksi..." />
+        </div>
+        <div class="top-actions">
+          <button class="icon-btn" title="Notifikasi">♧<i></i></button>
+          <div class="top-user">
+            <div class="avatar">AD</div>
+            <div><strong>Admin</strong><small>Administrator</small></div>
+          </div>
+        </div>
+      </header>
+
+      <section class="content">
+        <div class="page-header">
+          <div>
+            <div class="breadcrumb">Bata Finance / <span id="breadcrumb">Dashboard</span></div>
+            <h1 id="pageTitle">Dashboard</h1>
+            <p>Ringkasan kondisi keuangan dan operasional Bata Finance.</p>
+          </div>
+          <div class="header-actions">
+            <button class="btn btn-light" id="dateBtn">▣  05 Oktober 2026</button>
+            <button class="btn btn-primary" id="newLoanBtn">＋ Pengajuan Baru</button>
+          </div>
+        </div>
+
+        <!-- DASHBOARD -->
+        <section class="page-section active" id="dashboard">
+          <div class="stat-grid">
+            <article class="stat-card">
+              <div class="stat-top"><span>Total Modal</span><b class="stat-icon">◈</b></div>
+              <strong class="stat-value">Rp16.000.000</strong>
+              <div class="stat-meta up">↗ 8,4% <span>vs bulan lalu</span></div>
+            </article>
+            <article class="stat-card">
+              <div class="stat-top"><span>Total Piutang</span><b class="stat-icon">▣</b></div>
+              <strong class="stat-value">Rp12.450.000</strong>
+              <div class="stat-meta up">↗ 5,2% <span>vs bulan lalu</span></div>
+            </article>
+            <article class="stat-card">
+              <div class="stat-top"><span>Dana Tersedia</span><b class="stat-icon">◉</b></div>
+              <strong class="stat-value">Rp3.550.000</strong>
+              <div class="stat-meta">22,2% <span>dari total modal</span></div>
+            </article>
+            <article class="stat-card">
+              <div class="stat-top"><span>Profit Bersih</span><b class="stat-icon">↗</b></div>
+              <strong class="stat-value">Rp2.845.000</strong>
+              <div class="stat-meta up">↗ 12,8% <span>tahun berjalan</span></div>
+            </article>
+          </div>
+
+          <div class="stat-grid compact">
+            <article class="mini-stat"><span>Nasabah Aktif</span><strong>128</strong><em>+12 bulan ini</em></article>
+            <article class="mini-stat"><span>Pinjaman Aktif</span><strong>76</strong><em>Rp12,45 jt beredar</em></article>
+            <article class="mini-stat"><span>Jatuh Tempo</span><strong>9</strong><em class="warning-text">3 perlu perhatian</em></article>
+            <article class="mini-stat"><span>Tepat Waktu</span><strong>94,2%</strong><em class="up">+2,1% bulan ini</em></article>
+          </div>
+
+          <div class="dashboard-grid">
+            <article class="panel chart-panel wide">
+              <div class="panel-header">
+                <div><h3>Perkembangan Keuangan</h3><p>Modal, pencairan dan pembayaran</p></div>
+                <select id="chartPeriod"><option>6 Bulan</option><option>12 Bulan</option></select>
+              </div>
+              <div class="legend"><span><i></i> Modal</span><span><i></i> Pencairan</span><span><i></i> Pembayaran</span></div>
+              <div class="chart">
+                <div class="y-axis"><span>20 jt</span><span>15 jt</span><span>10 jt</span><span>5 jt</span><span>0</span></div>
+                <div class="plot">
+                  <div class="grid-line" style="top:0%"></div><div class="grid-line" style="top:25%"></div>
+                  <div class="grid-line" style="top:50%"></div><div class="grid-line" style="top:75%"></div>
+                  <div class="grid-line" style="top:100%"></div>
+                  <svg viewBox="0 0 700 260" preserveAspectRatio="none" class="chart-svg">
+                    <polyline points="0,150 120,130 240,115 360,105 480,82 600,65 700,48" class="line line-a"/>
+                    <polyline points="0,205 120,180 240,190 360,145 480,160 600,125 700,135" class="line line-b"/>
+                    <polyline points="0,220 120,205 240,180 360,170 480,145 600,115 700,95" class="line line-c"/>
+                  </svg>
+                  <div class="x-axis"><span>Mei</span><span>Jun</span><span>Jul</span><span>Agu</span><span>Sep</span><span>Okt</span></div>
+                </div>
+              </div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-header"><div><h3>Risk Monitoring</h3><p>Status portofolio</p></div><button class="text-btn">Lihat detail →</button></div>
+              <div class="risk-item"><div class="risk-circle low">72%</div><div><strong>Risiko Rendah</strong><small>92 nasabah</small></div><b>Rp8,2 jt</b></div>
+              <div class="risk-item"><div class="risk-circle medium">21%</div><div><strong>Perlu Verifikasi</strong><small>27 nasabah</small></div><b>Rp3,1 jt</b></div>
+              <div class="risk-item"><div class="risk-circle high">7%</div><div><strong>Risiko Tinggi</strong><small>9 nasabah</small></div><b>Rp1,15 jt</b></div>
+              <div class="risk-bar"><span style="width:72%"></span><span style="width:21%"></span><span style="width:7%"></span></div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-header"><div><h3>Jatuh Tempo</h3><p>Perlu ditindaklanjuti</p></div><button class="text-btn">Semua →</button></div>
+              <div class="due-list">
+                <div class="due-row"><div class="due-date"><strong>05</strong><small>OKT</small></div><div><strong>Andi Saputra</strong><small>Rp450.000 • Hari ini</small></div><span class="badge danger">Hari ini</span></div>
+                <div class="due-row"><div class="due-date"><strong>07</strong><small>OKT</small></div><div><strong>Siti Rahma</strong><small>Rp750.000 • 2 hari lagi</small></div><span class="badge warning">Segera</span></div>
+                <div class="due-row"><div class="due-date"><strong>09</strong><small>OKT</small></div><div><strong>Budi Santoso</strong><small>Rp325.000 • 4 hari lagi</small></div><span class="badge neutral">4 hari</span></div>
+              </div>
+            </article>
+
+            <article class="panel wide">
+              <div class="panel-header"><div><h3>Transaksi Terbaru</h3><p>Aktivitas keuangan terakhir</p></div><button class="text-btn">Lihat semua →</button></div>
+              <div class="table-wrap">
+                <table>
+                  <thead><tr><th>Transaksi</th><th>Nasabah</th><th>Tanggal</th><th>Nominal</th><th>Status</th></tr></thead>
+                  <tbody>
+                    <tr><td><span class="transaction-icon in">↓</span> Pembayaran cicilan</td><td>Rina Wulandari</td><td>05 Okt 2026</td><td class="money positive">+Rp525.000</td><td><span class="badge success">Berhasil</span></td></tr>
+                    <tr><td><span class="transaction-icon out">↑</span> Pencairan pinjaman</td><td>Dedi Kurniawan</td><td>04 Okt 2026</td><td class="money negative">−Rp1.500.000</td><td><span class="badge success">Berhasil</span></td></tr>
+                    <tr><td><span class="transaction-icon in">↓</span> Pembayaran cicilan</td><td>Nur Aisyah</td><td>04 Okt 2026</td><td class="money positive">+Rp375.000</td><td><span class="badge success">Berhasil</span></td></tr>
+                    <tr><td><span class="transaction-icon in">↓</span> Pembayaran cicilan</td><td>Fajar Hidayat</td><td>03 Okt 2026</td><td class="money positive">+Rp680.000</td><td><span class="badge warning">Terlambat</span></td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-header"><div><h3>Nasabah Terbaru</h3><p>5 pendaftaran terakhir</p></div><button class="text-btn">Lihat semua →</button></div>
+              <div class="customer-list">
+                <div class="customer-row"><div class="avatar">AS</div><div><strong>Agus Setiawan</strong><small>Nasabah baru</small></div><span class="badge success">Aktif</span></div>
+                <div class="customer-row"><div class="avatar alt">LM</div><div><strong>Lina Marlina</strong><small>Nasabah baru</small></div><span class="badge success">Aktif</span></div>
+                <div class="customer-row"><div class="avatar">DW</div><div><strong>Dimas Wijaya</strong><small>Repeat customer</small></div><span class="badge neutral">Review</span></div>
+                <div class="customer-row"><div class="avatar alt">PS</div><div><strong>Putri Sari</strong><small>Nasabah baru</small></div><span class="badge success">Aktif</span></div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- GENERIC MANAGEMENT SECTIONS -->
+        <section class="page-section" id="customers">
+          <div class="section-toolbar"><div><h2>Database Nasabah</h2><p>Kelola profil, riwayat, dan status seluruh nasabah.</p></div><button class="btn btn-primary">＋ Tambah Nasabah</button></div>
+          <div class="filter-row"><select><option>Semua Status</option><option>Aktif</option><option>Risiko</option><option>Repeat</option></select><select><option>Semua Risiko</option><option>Rendah</option><option>Menengah</option><option>Tinggi</option></select><div class="table-search">⌕ <input placeholder="Cari nama nasabah..."></div></div>
+          <div class="panel"><div class="table-wrap"><table><thead><tr><th>ID</th><th>Nasabah</th><th>Kontak</th><th>Total Pinjaman</th><th>Skor</th><th>Status</th><th>Aksi</th></tr></thead><tbody>
+            <tr><td>NAS-00128</td><td><strong>Andi Saputra</strong><small>Pedagang</small></td><td>0812-xxx-xxxx</td><td>Rp4.500.000</td><td><span class="score good">91</span></td><td><span class="badge success">Aktif</span></td><td>⋮</td></tr>
+            <tr><td>NAS-00127</td><td><strong>Siti Rahma</strong><small>Wiraswasta</small></td><td>0813-xxx-xxxx</td><td>Rp3.200.000</td><td><span class="score good">87</span></td><td><span class="badge success">Aktif</span></td><td>⋮</td></tr>
+            <tr><td>NAS-00126</td><td><strong>Budi Santoso</strong><small>Petani</small></td><td>0821-xxx-xxxx</td><td>Rp2.100.000</td><td><span class="score mid">68</span></td><td><span class="badge warning">Review</span></td><td>⋮</td></tr>
+            <tr><td>NAS-00125</td><td><strong>Rina Wulandari</strong><small>Penjual online</small></td><td>0857-xxx-xxxx</td><td>Rp1.750.000</td><td><span class="score good">94</span></td><td><span class="badge success">Aktif</span></td><td>⋮</td></tr>
+          </tbody></table></div></div>
+        </section>
+
+        <section class="page-section" id="applications">
+          <div class="section-toolbar"><div><h2>Pengajuan Pinjaman</h2><p>Review dan proses pengajuan pinjaman masuk.</p></div><button class="btn btn-primary">＋ Pengajuan Baru</button></div>
+          <div class="application-cards"><div class="app-card"><span>Menunggu Review</span><strong>12</strong><small>Perlu diproses hari ini</small></div><div class="app-card"><span>Disetujui</span><strong>8</strong><small>Rp6.750.000 total</small></div><div class="app-card"><span>Ditolak</span><strong>3</strong><small>Rp1.900.000 total</small></div></div>
+          <div class="panel"><div class="table-wrap"><table><thead><tr><th>No. Pengajuan</th><th>Nasabah</th><th>Jumlah</th><th>Tenor</th><th>Skor Risiko</th><th>Status</th><th>Aksi</th></tr></thead><tbody>
+            <tr><td>APP-20261005-012</td><td>Agus Setiawan</td><td>Rp1.500.000</td><td>3 bulan</td><td><span class="score good">88</span></td><td><span class="badge warning">Menunggu</span></td><td><button class="small-btn">Review</button></td></tr>
+            <tr><td>APP-20261005-011</td><td>Lina Marlina</td><td>Rp2.000.000</td><td>4 bulan</td><td><span class="score good">92</span></td><td><span class="badge success">Disetujui</span></td><td><button class="small-btn">Detail</button></td></tr>
+            <tr><td>APP-20261004-010</td><td>Dimas Wijaya</td><td>Rp3.000.000</td><td>6 bulan</td><td><span class="score mid">64</span></td><td><span class="badge danger">Ditolak</span></td><td><button class="small-btn">Detail</button></td></tr>
+          </tbody></table></div></div>
+        </section>
+
+        <section class="page-section" id="loans">
+          <div class="section-toolbar"><div><h2>Monitoring Pinjaman</h2><p>Pantau seluruh pinjaman aktif dan jatuh tempo.</p></div><button class="btn btn-light">Export Excel</button></div>
+          <div class="stat-grid compact"><article class="mini-stat"><span>Pinjaman Aktif</span><strong>76</strong><em>Rp12,45 jt</em></article><article class="mini-stat"><span>Jatuh Tempo 7 Hari</span><strong>14</strong><em class="warning-text">Rp4,2 jt</em></article><article class="mini-stat"><span>Terlambat</span><strong>5</strong><em class="danger-text">Rp1,15 jt</em></article></div>
+          <div class="panel"><div class="table-wrap"><table><thead><tr><th>Nasabah</th><th>Pinjaman</th><th>Total Kembali</th><th>Jatuh Tempo</th><th>Terbayar</th><th>Status</th></tr></thead><tbody>
+            <tr><td><strong>Andi Saputra</strong></td><td>Rp1.000.000</td><td>Rp1.250.000</td><td>10 Okt 2026</td><td>Rp750.000</td><td><span class="badge success">Aktif</span></td></tr>
+            <tr><td><strong>Siti Rahma</strong></td><td>Rp2.000.000</td><td>Rp2.600.000</td><td>12 Okt 2026</td><td>Rp1.300.000</td><td><span class="badge success">Aktif</span></td></tr>
+            <tr><td><strong>Citra Lestari</strong></td><td>Rp500.000</td><td>Rp625.000</td><td>05 Okt 2026</td><td>Rp0</td><td><span class="badge danger">Terlambat</span></td></tr>
+          </tbody></table></div></div>
+        </section>
+
+        <section class="page-section" id="payments">
+          <div class="section-toolbar"><div><h2>Pembayaran</h2><p>Catat dan pantau pembayaran nasabah.</p></div><button class="btn btn-primary">＋ Catat Pembayaran</button></div>
+          <div class="payment-summary"><div class="summary-box"><span>Hari Ini</span><strong>Rp1.580.000</strong><small>8 transaksi</small></div><div class="summary-box"><span>Bulan Ini</span><strong>Rp8.920.000</strong><small>94 transaksi</small></div><div class="summary-box"><span>Tunggakan</span><strong>Rp1.150.000</strong><small class="danger-text">5 nasabah</small></div></div>
+          <div class="panel"><div class="table-wrap"><table><thead><tr><th>ID Pembayaran</th><th>Nasabah</th><th>Waktu</th><th>Pokok</th><th>Bunga</th><th>Total</th><th>Status</th></tr></thead><tbody>
+            <tr><td>PAY-00981</td><td>Rina Wulandari</td><td>05 Okt, 09:32</td><td>Rp450.000</td><td>Rp75.000</td><td><strong>Rp525.000</strong></td><td><span class="badge success">Berhasil</span></td></tr>
+            <tr><td>PAY-00980</td><td>Nur Aisyah</td><td>04 Okt, 16:21</td><td>Rp300.000</td><td>Rp75.000</td><td><strong>Rp375.000</strong></td><td><span class="badge success">Berhasil</span></td></tr>
+          </tbody></table></div></div>
+        </section>
+
+        <section class="page-section" id="finance">
+          <div class="section-toolbar"><div><h2>Keuangan & Cash Flow</h2><p>Kontrol modal, arus kas, pendapatan, dan biaya.</p></div><button class="btn btn-primary">＋ Transaksi</button></div>
+          <div class="finance-grid"><div class="finance-card"><span>Saldo Kas</span><strong>Rp2.150.000</strong><small>13,4% modal</small></div><div class="finance-card"><span>Saldo Bank</span><strong>Rp1.400.000</strong><small>8,8% modal</small></div><div class="finance-card"><span>Pendapatan Bunga</span><strong>Rp3.420.000</strong><small>YTD 2026</small></div><div class="finance-card"><span>Biaya Operasional</span><strong>Rp575.000</strong><small>YTD 2026</small></div></div>
+          <div class="panel cashflow-panel"><div class="panel-header"><div><h3>Cash Flow Bulanan</h3><p>Perbandingan uang masuk dan keluar</p></div><span class="cash-positive">+Rp2.845.000 bersih</span></div><div class="cash-bars"><div class="cash-col"><div class="bars"><i style="height:70%"></i><b style="height:38%"></b></div><span>Mei</span></div><div class="cash-col"><div class="bars"><i style="height:62%"></i><b style="height:45%"></b></div><span>Jun</span></div><div class="cash-col"><div class="bars"><i style="height:76%"></i><b style="height:48%"></b></div><span>Jul</span></div><div class="cash-col"><div class="bars"><i style="height:82%"></i><b style="height:53%"></b></div><span>Agu</span></div><div class="cash-col"><div class="bars"><i style="height:72%"></i><b style="height:50%"></b></div><span>Sep</span></div><div class="cash-col"><div class="bars"><i style="height:91%"></i><b style="height:43%"></b></div><span>Okt</span></div></div><div class="cash-legend"><span><i></i> Uang masuk</span><span><i></i> Uang keluar</span></div></div>
+        </section>
+
+        <section class="page-section" id="reports">
+          <div class="section-toolbar"><div><h2>Laporan</h2><p>Generate laporan operasional dan keuangan.</p></div></div>
+          <div class="report-grid">
+            <button class="report-card"><span>▥</span><strong>Laporan Keuangan</strong><small>Profit, cash flow & saldo</small><b>Generate →</b></button>
+            <button class="report-card"><span>▣</span><strong>Laporan Pinjaman</strong><small>Portofolio & status pinjaman</small><b>Generate →</b></button>
+            <button class="report-card"><span>♙</span><strong>Laporan Nasabah</strong><small>Profil & perkembangan nasabah</small><b>Generate →</b></button>
+            <button class="report-card"><span>⚠</span><strong>Laporan Keterlambatan</strong><small>Tunggakan & risiko</small><b>Generate →</b></button>
+          </div>
+        </section>
+
+        <section class="page-section" id="settings">
+          <div class="section-toolbar"><div><h2>Pengaturan</h2><p>Konfigurasi sistem Bata Finance.</p></div></div>
+          <div class="settings-grid"><div class="panel setting-panel"><h3>Profil Perusahaan</h3><label>Nama perusahaan<input value="Bata Finance"></label><label>Email<input value="admin@batafinance.local"></label><label>Telepon<input value="08xx-xxxx-xxxx"></label><button class="btn btn-primary">Simpan Perubahan</button></div><div class="panel setting-panel"><h3>Parameter Pinjaman</h3><label>Bunga default (%)<input value="10"></label><label>Tenor maksimum (bulan)<input value="12"></label><label>Batas risiko minimum<input value="70"></label><button class="btn btn-primary">Simpan Parameter</button></div></div>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal" id="loanModal">
+    <div class="modal-box">
+      <button class="modal-close" id="modalClose">×</button>
+      <h2>Pengajuan Pinjaman Baru</h2>
+      <p>Masukkan data awal pengajuan untuk diproses.</p>
+      <div class="form-grid"><label>Nama Nasabah<input placeholder="Pilih atau ketik nama"></label><label>Jumlah Pinjaman<input type="number" placeholder="Rp"></label><label>Tenor<input type="number" placeholder="Bulan"></label><label>Tujuan Pinjaman<select><option>Modal usaha</option><option>Keperluan pribadi</option><option>Lainnya</option></select></label></div>
+      <div class="score-preview"><span>Estimasi Risk Score</span><strong>—</strong><small>Skor akan dihitung setelah data nasabah lengkap.</small></div>
+      <div class="modal-actions"><button class="btn btn-light" id="cancelModal">Batal</button><button class="btn btn-primary" id="saveLoan">Simpan Pengajuan</button></div>
+    </div>
+  </div>
+
+  <script>
+    const navItems = document.querySelectorAll('.nav-item');
+    const sections = document.querySelectorAll('.page-section');
+    const title = document.getElementById('pageTitle');
+    const breadcrumb = document.getElementById('breadcrumb');
+    const labels = {
+      dashboard:'Dashboard', customers:'Nasabah', applications:'Pengajuan',
+      loans:'Pinjaman', payments:'Pembayaran', finance:'Keuangan',
+      reports:'Laporan', settings:'Pengaturan'
+    };
+
+    function showSection(id) {
+      navItems.forEach(n => n.classList.toggle('active', n.dataset.section === id));
+      sections.forEach(s => s.classList.toggle('active', s.id === id));
+      title.textContent = labels[id];
+      breadcrumb.textContent = labels[id];
+      window.scrollTo({top:0, behavior:'smooth'});
+    }
+    navItems.forEach(item => item.addEventListener('click', () => showSection(item.dataset.section)));
+
+    const modal = document.getElementById('loanModal');
+    document.getElementById('newLoanBtn').onclick = () => modal.classList.add('show');
+    document.getElementById('modalClose').onclick = () => modal.classList.remove('show');
+    document.getElementById('cancelModal').onclick = () => modal.classList.remove('show');
+    document.getElementById('saveLoan').onclick = () => {
+      alert('Pengajuan berhasil disimpan sebagai draft.');
+      modal.classList.remove('show');
+    };
+    modal.addEventListener('click', e => { if (e.target === modal) modal.classList.remove('show'); });
+
+    document.getElementById('globalSearch').addEventListener('input', e => {
+      const q = e.target.value.toLowerCase();
+      document.querySelectorAll('tbody tr').forEach(row => {
+        row.style.display = row.textContent.toLowerCase().includes(q) ? '' : 'none';
+      });
+    });
+
+    document.querySelectorAll('.report-card').forEach(card => card.addEventListener('click', () => {
+      alert('Laporan siap dibuat. Integrasikan endpoint backend untuk export PDF/Excel.');
+    }));
+  </script>
+</body>
+</html>
